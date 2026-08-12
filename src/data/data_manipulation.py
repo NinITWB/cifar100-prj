@@ -6,4 +6,6 @@ dataset = datasets.CIFAR100(
     download=True
 )
 
-print("Number of images:", len(dataset))
+img, label = dataset[0]
+
+print(img.shape)
