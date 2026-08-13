@@ -1,11 +1,20 @@
+import matplotlib.pyplot as plt
+
 from torchvision import datasets
+from torchvision.transforms import ToTensor
+from torch.utils.data import DataLoader
 
 dataset = datasets.CIFAR100(
     root="data",
     train=True,
-    download=True
+    download=True,
+    transform=ToTensor()
 )
 
-img, label = dataset[0]
+loader = DataLoader(
+    dataset=dataset,
+    batch_size=16,
+    shuffle=True
+)
 
-print(img.shape)
+images, labels = next(iter(loader))
